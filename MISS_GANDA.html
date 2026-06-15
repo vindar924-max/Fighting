@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>🌸 believe in yourself 🌸</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
+      font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', 'Nunito', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .card {
+      max-width: 700px;
+      width: 100%;
+      background: rgba(255, 250, 245, 0.95);
+      backdrop-filter: blur(2px);
+      border-radius: 4rem 2rem 4rem 2rem;
+      box-shadow: 0 25px 45px rgba(255, 105, 180, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      padding: 2rem 1.8rem 2.5rem;
+      transition: all 0.2s ease;
+      border: 1px solid #ffe2f0;
+    }
+
+    .floating-heart {
+      position: fixed;
+      font-size: 1.4rem;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+      animation: floatUp 10s infinite ease-in-out;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.5; }
+      80% { opacity: 0.4; }
+      100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #c43a6b;
+      letter-spacing: -0.3px;
+      text-shadow: 3px 3px 0 #ffe0ec;
+      margin-bottom: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .question-mark {
+      background: #ffb7c5;
+      border-radius: 50%;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 5px 0 #b34e6e;
+    }
+
+    .sub {
+      font-size: 1rem;
+      color: #d96c8e;
+      background: #fff0f3;
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .button-park {
+      position: relative;
+      margin: 2rem 0 1.8rem;
+      min-height: 130px;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .move-zone {
+      position: relative;
+      display: inline-block;
+    }
+
+    .btn {
+      border: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+      letter-spacing: 1px;
+      min-width: 160px;
+      backdrop-filter: blur(2px);
+      transition: all 0.2s ease;
+    }
+
+    .btn-yes {
+      background: #ff8aa8;
+      color: white;
+      border-bottom: 4px solid #b34163;
+      transition: transform 0.2s cubic-bezier(0.2, 1.2, 0.4, 1), background 0.1s;
+      transform: scale(1);
+      transform-origin: center;
+    }
+
+    .btn-yes:active {
+      transform: scale(0.96);
+      background: #fd6f93;
+    }
+
+    .btn-nope {
+      background: #b0b0c0;
+      color: #2d2f3a;
+      border-bottom: 4px solid #6c6c7c;
+      transition: transform 0.2s cubic-bezier(0.2, 1.1, 0.4, 1.2);
+      cursor: pointer;
+      will-change: transform;
+    }
+
+    .result-area {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #fff8fa;
+      border-radius: 50px;
+      transition: all 0.3s;
+      display: none;
+      border: 2px dashed #ffb7ca;
+      animation: gentlePop 0.4s ease forwards;
+    }
+
+    @keyframes gentlePop {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .message {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #bc4e74;
+      background: #ffeef4;
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 80px;
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+      max-width: 90%;
+      word-break: break-word;
+    }
+
+    .cute-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .cute-item {
+      background: white;
+      border-radius: 38px;
+      padding: 0.7rem;
+      box-shadow: 0 12px 18px rgba(255, 100, 150, 0.2);
+      width: 85px;
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      animation: bounceSoft 0.5s ease;
+    }
+
+    .cute-item svg {
+      width: 60px;
+      height: 60px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+
+    @keyframes bounceSoft {
+      0% { transform: scale(0.7); opacity: 0; }
+      80% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .sparkle {
+      font-size: 1.8rem;
+      margin: 0 0.2rem;
+    }
+
+    footer {
+      margin-top: 1.8rem;
+      font-size: 0.7rem;
+      color: #e29bb2;
+    }
+
+    .vanished-note {
+      font-size: 0.9rem;
+      background: #ffe0e7;
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #bc6f81;
+    }
+
+    @media (max-width: 550px) {
+      .card {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      .btn {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.4rem;
+        min-width: 130px;
+      }
+      .button-park {
+        gap: 1rem;
+      }
+      .message {
+        font-size: 1.1rem;
+      }
+      .cute-item {
+        width: 70px;
+        height: 70px;
+      }
+      .cute-item svg {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .btn {
+        font-size: 1rem;
+        min-width: 110px;
+      }
+      .cute-item {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    button:focus-visible {
+      outline: 3px solid #ff99bb;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="sparkle">✨🌸✨</div>
+  <h1>
+    YOU KNOW YOU'RE PRETTY,
+    <span class="question-mark">?</span>
+  </h1>
+  <div class="sub">💖 be honest with yourself 💖</div>
+
+  <div class="button-park" id="buttonPark">
+    <button class="btn btn-yes" id="yesBtn">💖 yes, i know 💖</button>
+    <div class="move-zone" id="nopeWrapper">
+      <button class="btn btn-nope" id="nopeBtn">🙅‍♀️ NOPE 🙅</button>
+    </div>
+  </div>
+
+  <div class="result-area" id="resultArea">
+    <div class="message" id="motivationMessage">✨ SEE, BELIEVE IN YOURSELF MORE ✨</div>
+    <div class="cute-gallery" id="cuteGallery"></div>
+    <div class="sparkle">💕 you are magic 💕</div>
+  </div>
+  <footer>✨ click "yes, i know" for a confidence boost ✨</footer>
+</div>
+
+<script>
+  (function() {
+    // ---------- 51 UNIQUE MOTIVATIONAL MESSAGES (no repeats until cycle completes) ----------
+    const MASTER_MESSAGES = [
+      "✨ SEE, BELIEVE IN YOURSELF MORE ✨",
+      "💫 YOU ARE ENOUGH, JUST AS YOU ARE 💫",
+      "🌸 YOUR LIGHT MAKES THE WORLD BEAUTIFUL 🌸",
+      "⭐️ CONFIDENCE LOOKS STUNNING ON YOU ⭐️",
+      "🌷 PRETTY ISN'T A QUESTION, IT'S A FACT 🌷",
+      "💖 OWN YOUR BRILLIANCE, QUEEN! 💖",
+      "🌟 YOU DESERVE ALL THE LOVE YOU GIVE OTHERS 🌟",
+      "💕 SELF-LOVE IS THE BEST LOVE STORY 💕",
+      "🌙 EVEN THE MOON ADMIRES YOUR GLOW 🌙",
+      "✨ DOUBT YOUR DOUBTS, NOT YOUR BEAUTY ✨",
+      "🌸 YOU ARE A WORK OF ART, NEVER FORGET 🌸",
+      "💪 BELIEVE IN YOUR MAGIC, BEAUTIFUL SOUL 💪",
+      "🌼 YOUR SMILE CHANGES THE ATMOSPHERE 🌼",
+      "💎 YOU ARE PRECIOUS AND UNIQUE 💎",
+      "🌹 STRENGTH AND GRACE LOOKS GOOD ON YOU 🌹",
+      "🧸 BE KIND TO YOURSELF, YOU'RE DOING GREAT 🧸",
+      "🍃 SELF-CONFIDENCE IS YOUR SUPERPOWER 🍃",
+      "🌈 RADIATE YOUR INNER BEAUTY OUTWARD 🌈",
+      "🌟 EVERY DAY YOU GROW BRIGHTER 🌟",
+      "🌸 BE PROUD OF THE PERSON YOU ARE BECOMING 🌸",
+      "💖 YOU ARE LOVED, VALUED, AND ENOUGH 💖",
+      "✨ SPARKLE LIKE THE DIAMOND YOU ARE ✨",
+      "🌺 PRETTY IS THE LEAST INTERESTING THING ABOUT YOU 🌺",
+      "🌞 YOUR ENERGY IS IRRESISTIBLE 🌞",
+      "🍭 STOP DOUBTING, START SHINING 🍭",
+      "🎀 YOU MAKE THE WORLD A PRETTIER PLACE 🎀",
+      "🦋 WATCH YOURSELF BLOSSOM 🦋",
+      "💫 THE MOST IMPORTANT RELATIONSHIP IS WITH YOURSELF 💫",
+      "⭐️ YOU CARRY STARDUST IN YOUR VEINS ⭐️",
+      "🌷 CELEBRATE YOUR EXISTENCE EVERYDAY 🌷",
+      "🧁 SELF-LOVE IS THE SWEETEST VICTORY 🧁",
+      "🪄 YOU ARE YOUR OWN KIND OF BEAUTIFUL 🪄",
+      "💎 WORTHY, CAPABLE, AND ABSOLUTELY GORGEOUS 💎",
+      "🌙 YOUR REFLECTION DESERVES KIND WORDS 🌙",
+      "🌸 BELIEVE IN YOURSELF AS I BELIEVE IN YOU 🌸",
+      "✨ YOU'RE NOT PRETTY, YOU'RE ART ✨",
+      "💪 SAY IT: I AM WORTHY OF LOVE AND RESPECT 💪",
+      "🌟 DON'T LET THE WORLD DULL YOUR SPARKLE 🌟",
+      "🌈 YOUR FLAWS ARE PART OF YOUR PERFECTION 🌈",
+      "🍀 YOU ARE UNSTOPPABLE WHEN YOU BELIEVE 🍀",
+      "🌸 TODAY IS A GOOD DAY TO LOVE YOURSELF 🌸",
+      "💖 YOU DIDN'T COME THIS FAR TO ONLY COME THIS FAR 💖",
+      "✨ YOU ARE THE AUTHOR OF YOUR OWN GLOW ✨",
+      "🌻 KEEP GROWING, KEEP GLOWING 🌻",
+      "⭐️ CONFIDENCE ISN'T 'THEY WILL LIKE ME' — IT'S 'I'LL BE FINE IF THEY DON'T' ⭐️",
+      "🌹 YOU WEAR YOUR STRENGTH BEAUTIFULLY 🌹",
+      "🧸 LET YOUR SELF-TALK BE AS SOFT AS A LULLABY 🧸",
+      "💕 YOUR HEART IS AS BEAUTIFUL AS YOUR FACE 💕",
+      "🎀 DARLING, YOU ARE A MASTERPIECE 🎀",
+      "🌈 LET YOUR INNER SUNSHINE OUT 🌈"
+    ]; // exactly 51 unique messages
+
+    // ---- Shuffled queue for messages (no repeats until full cycle) ----
+    let messageQueue = [];
+    let messageIndex = 0;
+
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function refillQueue() {
+      // create a fresh shuffled copy of MASTER_MESSAGES
+      messageQueue = shuffleArray([...MASTER_MESSAGES]);
+      messageIndex = 0;
+    }
+
+    function getNextMessage() {
+      if (messageQueue.length === 0 || messageIndex >= messageQueue.length) {
+        refillQueue();
+      }
+      const msg = messageQueue[messageIndex];
+      messageIndex++;
+      return msg;
+    }
+
+    // DOM elements
+    const nopeBtn = document.getElementById('nopeBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const resultArea = document.getElementById('resultArea');
+    const cuteGallery = document.getElementById('cuteGallery');
+    const motivationMsgSpan = document.getElementById('motivationMessage');
+    const buttonPark = document.getElementById('buttonPark');
+    const nopeWrapper = document.getElementById('nopeWrapper');
+
+    // ---- Nope click counter & vanish control ----
+    let nopeClickCount = 0;
+    const REQUIRED_CLICKS_TO_VANISH = 15;
+    let nopeVanished = false;
+
+    // ---- Yes button scaling (grows each Nope click) ----
+    let currentScale = 1;
+    const SCALE_INCREMENT = 0.07;
+    const MAX_SCALE = 1.8;
+
+    function growYesButton() {
+      if (currentScale < MAX_SCALE) {
+        currentScale = Math.min(currentScale + SCALE_INCREMENT, MAX_SCALE);
+        yesBtn.style.transform = `scale(${currentScale})`;
+        yesBtn.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.2, 0.6, 1)';
+      } else {
+        yesBtn.style.transform = `scale(${MAX_SCALE})`;
+        yesBtn.style.animation = 'gentlePop 0.2s ease';
+        setTimeout(() => { if(yesBtn) yesBtn.style.animation = ''; }, 200);
+      }
+    }
+
+    // Move Nope button to random position inside buttonPark (only on click)
+    function moveNopeAway() {
+      if (!nopeBtn || nopeVanished) return;
+      if (nopeBtn.style.display === 'none') return;
+
+      const container = buttonPark;
+      const originalTransform = nopeBtn.style.transform;
+      nopeBtn.style.transform = 'none';
+      
+      const btnRect = nopeBtn.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      let naturalLeft = btnRect.left - containerRect.left;
+      let naturalTop = btnRect.top - containerRect.top;
+      const btnW = btnRect.width;
+      const btnH = btnRect.height;
+      const containerW = containerRect.width;
+      const containerH = containerRect.height;
+      
+      let minDx = -naturalLeft;
+      let maxDx = containerW - btnW - naturalLeft;
+      let minDy = -naturalTop;
+      let maxDy = containerH - btnH - naturalTop;
+      
+      if (minDx > maxDx) { minDx = 0; maxDx = 0; }
+      if (minDy > maxDy) { minDy = 0; maxDy = 0; }
+      
+      let dx = Math.floor(Math.random() * (maxDx - minDx + 1) + minDx);
+      let dy = Math.floor(Math.random() * (maxDy - minDy + 1) + minDy);
+      
+      if (Math.random() > 0.65) {
+        dx = dx * 1.3;
+        dy = dy * 1.2;
+        dx = Math.min(maxDx, Math.max(minDx, dx));
+        dy = Math.min(maxDy, Math.max(minDy, dy));
+      }
+      
+      nopeBtn.style.transform = `translate(${dx}px, ${dy}px)`;
+      nopeBtn.style.transition = 'transform 0.18s cubic-bezier(0.3, 1.2, 0.5, 1)';
+    }
+
+    // Show prompt on specific click numbers (3rd, 6th, 9th, 12th)
+    function showEncouragementPrompt(clickNumber) {
+      let message = `🌸 Believe in yourself, lovely! 🌸\n\nYou've clicked "NOPE" ${clickNumber} times. That's okay, but deep down you know the truth.\n\nPlease click "yes, i know" — you deserve to see the motivation and cuteness! 💖`;
+      alert(message);
+    }
+
+    // Vanish Nope button completely
+    function vanishNopeButton(source = 'click') {
+      if (nopeVanished) return;
+      nopeVanished = true;
+      if (nopeBtn) {
+        nopeBtn.style.display = 'none';
+        nopeBtn.style.transform = '';
+      }
+      if (!document.querySelector('.vanished-note')) {
+        const vanishNote = document.createElement('div');
+        vanishNote.className = 'vanished-note';
+        if (source === 'yes') {
+          vanishNote.innerHTML = '✨ Nope vanished because you believed in yourself! ✨<br>💖 Now enjoy your positive energy 💖';
+        } else {
+          vanishNote.innerHTML = '✨ Nope has vanished after 15 tries! ✨<br> Now only "yes, i know" remains. Click it and celebrate yourself!';
+        }
+        const park = document.getElementById('buttonPark');
+        if (park) {
+          park.insertAdjacentElement('afterend', vanishNote);
+          setTimeout(() => {
+            if (vanishNote) vanishNote.style.opacity = '0.8';
+          }, 10);
+        }
+      }
+    }
+
+    // --- Nope button event handlers (click only) ---
+    function handleNopeClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nopeVanished || nopeBtn.style.display === 'none') return;
+      
+      nopeClickCount++;
+      
+      if (nopeClickCount === 3 || nopeClickCount === 6 || nopeClickCount === 9 || nopeClickCount === 12) {
+        showEncouragementPrompt(nopeClickCount);
+      }
+      
+      moveNopeAway();
+      growYesButton();
+      
+      if (nopeClickCount === REQUIRED_CLICKS_TO_VANISH) {
+        vanishNopeButton('click');
+      }
+      
+      nopeBtn.style.transform += ' rotate(2deg)';
+      setTimeout(() => {
+        if (nopeBtn && !nopeVanished && nopeBtn.style.display !== 'none') {
+          const currentTransform = nopeBtn.style.transform;
+          const cleanTransform = currentTransform.replace(/rotate\([^)]*\)/g, '');
+          nopeBtn.style.transform = cleanTransform;
+        }
+      }, 100);
+    }
+    
+    function handleNopeTouch(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nopeVanished || nopeBtn.style.display === 'none') return;
+      
+      nopeClickCount++;
+      if (nopeClickCount === 3 || nopeClickCount === 6 || nopeClickCount === 9 || nopeClickCount === 12) {
+        showEncouragementPrompt(nopeClickCount);
+      }
+      moveNopeAway();
+      growYesButton();
+      if (nopeClickCount === REQUIRED_CLICKS_TO_VANISH) {
+        vanishNopeButton('click');
+      }
+      nopeBtn.style.transform += ' rotate(1deg)';
+      setTimeout(() => {
+        if (nopeBtn && !nopeVanished && nopeBtn.style.display !== 'none') {
+          const current = nopeBtn.style.transform;
+          const clean = current.replace(/rotate\([^)]*\)/g, '');
+          nopeBtn.style.transform = clean;
+        }
+      }, 100);
+    }
+
+    function attachNopeEvents() {
+      nopeBtn.addEventListener('click', handleNopeClick);
+      nopeBtn.addEventListener('touchstart', handleNopeTouch);
+      nopeBtn.addEventListener('mousedown', (e) => e.preventDefault());
+    }
+
+    // ---- YES BUTTON: show next unique message (no repeats until cycle ends) + cute gallery + vanish Nope ----
+    function showMotivationWithCute() {
+      const nextMsg = getNextMessage();
+      motivationMsgSpan.textContent = nextMsg;
+      resultArea.style.display = 'block';
+      
+      cuteGallery.innerHTML = '';
+      
+      const cuteSvgList = [
+        `<svg viewBox="0 0 100 100"><path fill="#ff6f91" d="M50,30.9C50,30.9,42,18,29,18C16,18,9,28,9,41c0,16,17,29,41,41c24-12,41-25,41-41c0-13-7-23-20-23C58,18,50,30.9,50,30.9z" /><circle fill="white" cx="36" cy="38" r="5"/><circle fill="white" cx="64" cy="38" r="5"/><path fill="white" d="M38,58 Q50,70 62,58" stroke="#d13b5e" stroke-width="3" fill="none"/><circle fill="#333" cx="34" cy="37" r="2"/><circle fill="#333" cx="62" cy="37" r="2"/></svg>`,
+        `<svg viewBox="0 0 100 100"><polygon points="50,10 63,35 90,40 70,60 75,88 50,73 25,88 30,60 10,40 37,35" fill="#ffcb77"/><circle cx="38" cy="45" r="4" fill="#f8a5a5"/><circle cx="62" cy="45" r="4" fill="#f8a5a5"/><path d="M44 58 Q50 66 56 58" stroke="#b65f3e" stroke-width="2.5" fill="none"/></svg>`,
+        `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="#ffe0f0"/><ellipse cx="50" cy="38" rx="28" ry="20" fill="#ffc0d0"/><circle cx="35" cy="48" r="5" fill="#382d2d"/><circle cx="65" cy="48" r="5" fill="#382d2d"/><ellipse cx="50" cy="62" rx="10" ry="6" fill="#ff8da1"/><path d="M23 30 L15 18 M77 30 L85 18" stroke="#bc6f81" stroke-width="4" stroke-linecap="round"/></svg>`,
+        `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" fill="#FDD0F2"/><path fill="#FFB3BA" d="M50 25 L52 35 L62 35 L54 42 L57 52 L50 46 L43 52 L46 42 L38 35 L48 35 Z"/><circle cx="50" cy="50" r="8" fill="#FFE156"/><circle cx="43" cy="45" r="3" fill="#F4A261"/><circle cx="57" cy="45" r="3" fill="#F4A261"/></svg>`,
+        `<svg viewBox="0 0 100 100"><defs><radialGradient id="grad" cx="50%" cy="50%"><stop offset="0%" stop-color="#ff9eb5"/><stop offset="100%" stop-color="#ff597b"/></radialGradient></defs><path fill="url(#grad)" d="M50,88C27,73,8,58,8,40c0-14,9-24,22-24c8,0,14,4,20,12c6-8,12-12,20-12c13,0,22,10,22,24c0,18-19,33-42,48z"/><path fill="white" d="M32 37 L38 37 L38 31 L38 37 L44 37 L38 37 L38 43 L38 37 L32 37Z" transform="translate(5, -3)"/><path fill="#FFF9C4" d="M72 27 L75 27 L75 30 L78 30 L75 30 L75 33 L75 30 L72 30Z"/></svg>`,
+        `<svg viewBox="0 0 100 100"><circle cx="50" cy="55" r="35" fill="#fbc4c4"/><polygon points="35,30 25,15 40,27" fill="#f5a3a3"/><polygon points="65,30 75,15 60,27" fill="#f5a3a3"/><circle cx="38" cy="55" r="5" fill="#4a2e2e"/><circle cx="62" cy="55" r="5" fill="#4a2e2e"/><path d="M45 72 Q50 80 55 72" stroke="#7a4444" stroke-width="3" fill="none"/><ellipse cx="50" cy="48" rx="8" ry="5" fill="#ff8f9f"/></svg>`
+      ];
+      
+      for (let i = 0; i < cuteSvgList.length; i++) {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cute-item';
+        itemDiv.innerHTML = cuteSvgList[i];
+        cuteGallery.appendChild(itemDiv);
+      }
+      
+      const extraSpark = document.createElement('div');
+      extraSpark.style.display = 'flex';
+      extraSpark.style.gap = '12px';
+      extraSpark.style.justifyContent = 'center';
+      extraSpark.style.marginTop = '12px';
+      extraSpark.style.fontSize = '1.4rem';
+      extraSpark.innerHTML = '⭐️🌸💖✨🌼💕⭐️';
+      cuteGallery.parentNode.appendChild(extraSpark);
+      setTimeout(() => {
+        if(extraSpark && extraSpark.remove) extraSpark.remove();
+      }, 4000);
+      
+      createMiniConfetti();
+      motivationMsgSpan.style.animation = 'none';
+      motivationMsgSpan.offsetHeight;
+      motivationMsgSpan.style.animation = 'gentlePop 0.4s ease';
+    }
+    
+    function createMiniConfetti() {
+      const icons = ['🌸', '💖', '✨', '⭐️', '🌼', '💕', '🌟'];
+      for (let i = 0; i < 22; i++) {
+        const el = document.createElement('div');
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        el.style.position = 'fixed';
+        el.style.left = Math.random() * window.innerWidth + 'px';
+        el.style.top = '-30px';
+        el.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+        el.style.pointerEvents = 'none';
+        el.style.zIndex = '999';
+        el.style.opacity = '0.8';
+        el.style.transition = 'all 1.2s ease-out';
+        document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transform = `translateY(${window.innerHeight + 40}px) rotate(${Math.random() * 40 - 20}deg)`;
+          el.style.opacity = '0';
+        }, 10);
+        setTimeout(() => el.remove(), 1400);
+      }
+    }
+    
+    // YES button click handler: vanish Nope instantly + show unique motivational message
+    function handleYesClick(e) {
+      e.preventDefault();
+      
+      if (!nopeVanished) {
+        vanishNopeButton('yes');
+      }
+      
+      showMotivationWithCute();
+      
+      yesBtn.style.transform = `scale(${currentScale * 0.95})`;
+      setTimeout(() => {
+        if (yesBtn) yesBtn.style.transform = `scale(${currentScale})`;
+      }, 120);
+    }
+    
+    // --- Resize handling for Nope button (if not vanished) ---
+    function repositionNopeOnResize() {
+      if (!nopeBtn || nopeVanished || nopeBtn.style.display === 'none') return;
+      const prevTransform = nopeBtn.style.transform;
+      nopeBtn.style.transform = 'none';
+      const container = buttonPark;
+      const btnRect = nopeBtn.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      let naturalLeft = btnRect.left - containerRect.left;
+      let naturalTop = btnRect.top - containerRect.top;
+      const btnW = btnRect.width;
+      const btnH = btnRect.height;
+      const containerW = containerRect.width;
+      const containerH = containerRect.height;
+      let minDx = -naturalLeft;
+      let maxDx = containerW - btnW - naturalLeft;
+      let minDy = -naturalTop;
+      let maxDy = containerH - btnH - naturalTop;
+      if (minDx > maxDx) minDx = maxDx = 0;
+      if (minDy > maxDy) minDy = maxDy = 0;
+      const match = prevTransform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+      if (match) {
+        let curDx = parseFloat(match[1]);
+        let curDy = parseFloat(match[2]);
+        if (curDx < minDx || curDx > maxDx || curDy < minDy || curDy > maxDy) {
+          let newDx = Math.floor(Math.random() * (maxDx - minDx + 1) + minDx);
+          let newDy = Math.floor(Math.random() * (maxDy - minDy + 1) + minDy);
+          nopeBtn.style.transform = `translate(${newDx}px, ${newDy}px)`;
+        } else {
+          nopeBtn.style.transform = prevTransform;
+        }
+      } else {
+        nopeBtn.style.transform = prevTransform;
+      }
+    }
+    
+    // --- Initialization ---
+    resultArea.style.display = 'none';
+    yesBtn.style.transform = 'scale(1)';
+    
+    // Initialize message queue (shuffled)
+    refillQueue();
+    
+    attachNopeEvents();
+    yesBtn.addEventListener('click', handleYesClick);
+    
+    setTimeout(() => {
+      if (nopeBtn && !nopeVanished) moveNopeAway();
+    }, 100);
+    
+    window.addEventListener('resize', () => {
+      repositionNopeOnResize();
+    });
+    
+    function createFloatingHearts() {
+      for (let i = 0; i < 14; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = ['❤️','💖','🌸','✨','💕','⭐️','🌷'][Math.floor(Math.random()*7)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = 7 + Math.random() * 14 + 's';
+        heart.style.animationDelay = Math.random() * 12 + 's';
+        heart.style.fontSize = 1 + Math.random() * 1.8 + 'rem';
+        heart.style.opacity = 0.2 + Math.random() * 0.4;
+        document.body.appendChild(heart);
+      }
+    }
+    createFloatingHearts();
+  })();
+</script>
+</body>
+</html>
